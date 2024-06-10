@@ -2,6 +2,19 @@
 A web interface for Stable Diffusion, implemented using Gradio library.
 
 # Since I run stable-diffusion on linux and mostly on server I forked the repo for faster user
+
+- For fast download of all tools
+```
+git clone https://github.com/aristocratos/btop.git
+cd btop
+make
+sudo make install
+cd ~
+git clone https://github.com/TheElevatedOne/sd-webui-for-own-use.git
+cd sd-webui-for-own-use
+./webui.sh
+```
+
 ## Installation consists of (For ubuntu only):
 - Update & Upgrade packages
 - Install all dependencies
