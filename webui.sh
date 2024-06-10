@@ -3,7 +3,11 @@
 # Please do not make any changes to this file,  #
 # change the variables in webui-user.sh instead #
 #################################################
-
+printf "################################################################"
+printf "Upgrading packages and installing requirements"
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3 python3-pip python3-venv libgl1 google-perftools zip unzip -y
+printf "################################################################"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 
@@ -227,6 +231,26 @@ else
     printf "python venv already activate or run without venv: ${VIRTUAL_ENV}"
     printf "\n%s\n" "${delimiter}"
 fi
+
+# Custom stuff starts here
+printf "\n%s\n" "${delimiter}"
+printf "Installing Dynamic Prompts\n"
+git clone https://github.com/adieyal/sd-dynamic-prompts.git $SCRIPT_DIR/extensions/sd-dynamic-prompts
+printf "\n%s\n" "${delimiter}"
+printf "Installing gdown\n"
+$SCRIPT_DIR/venv/bin/python -m pip install gdown
+printf "\n%s\n" "${delimiter}"
+printf "Downloading models\n"
+wget "https://huggingface.co/AstraliteHeart/pony-diffusion-v6/resolve/main/v6.safetensors?download=true" -O $SCRIPT_DIR/models/Stable-diffusion/PonyDiffusion_V6.safetensors
+
+$SCRIPT_DIR/venv/bin/python -m gdown -O $SCRIPT_DIR/ --fuzzy https://drive.google.com/file/d/1XZ9jNZUtezfOFxff_y9GVz3957RXw1dQ/view?usp=sharing
+unzip Models.zip && rm Models.zip
+printf "\n%s\n" "${delimiter}"
+printf "Creating start.sh\n"
+echo 'SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )' >> start.sh
+echo '$SCRIPT_DIR/webui.sh --listen --port 8888' >> start.sh
+chmod +x start.sh
+printf "\n%s\n" "${delimiter}"
 
 # Try using TCMalloc on Linux
 prepare_tcmalloc() {
