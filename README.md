@@ -26,6 +26,7 @@ cd sd-webui-for-own-use
     - Pony Realism
     - Bad Anatomy XL LoRA
     - Pony PDXL Embeddings by Zovya
+    - [Pony Backgrounds LoRA](https://civitai.com/models/454079?modelVersionId=505533)
 - Create startup file
 - FIN
 
