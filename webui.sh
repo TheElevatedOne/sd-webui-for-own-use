@@ -243,7 +243,7 @@ printf "\n%s\n" "${delimiter}"
 printf "Downloading models\n"
 wget "https://huggingface.co/AstraliteHeart/pony-diffusion-v6/resolve/main/v6.safetensors?download=true" -O $SCRIPT_DIR/models/Stable-diffusion/PonyDiffusion_V6.safetensors
 
-$SCRIPT_DIR/venv/bin/python -m gdown -O $SCRIPT_DIR/ --fuzzy https://drive.google.com/file/d/1XZ9jNZUtezfOFxff_y9GVz3957RXw1dQ/view?usp=sharing
+$SCRIPT_DIR/venv/bin/python -m gdown -O $SCRIPT_DIR/ --fuzzy https://drive.google.com/file/d/10bSfHH76LQqlpD-GTYmXp5IrEv04Grw0/view?usp=drive_link
 unzip Models.zip && rm Models.zip
 printf "\n%s\n" "${delimiter}"
 printf "Creating start.sh\n"
